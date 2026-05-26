@@ -1,0 +1,62 @@
+﻿# Python Math Projects Collection
+
+A collection of 6 Python programs demonstrating various mathematical calculations.
+
+## Programs Included
+
+1. **mean_calculator.py** - Calculate mean/average of 8 subjects with grade calculation
+2. **area_calculator.py** - Calculate area of 5 different shapes (Circle, Rectangle, Triangle, Square, Trapezoid)
+3. **volume_calculator.py** - Calculate volume of 5 different 3D shapes (Cube, Sphere, Cylinder, Cone, Prism)
+4. **statistics_calculator.py** - Statistical calculations (Mean, Median, Mode, Range, Variance, Standard Deviation)
+5. **financial_calculator.py** - Financial calculations (Interest, EMI, Profit/Loss, Discount)
+6. **geometry_calculator.py** - Geometry calculations (Pythagorean theorem, Distance, Slope, Perimeter, Quadratic equation)
+
+## How to Run
+
+### Run individual programs:
+```bash
+python mean_calculator.py
+python area_calculator.py
+python volume_calculator.py
+python statistics_calculator.py
+python financial_calculator.py
+python geometry_calculator.py
+python mean_calculator.py; python area_calculator.py; python volume_calculator.py; python statistics_calculator.py; python financial_calculator.py; python geometry_calculator.py
+
+
+**Create .gitignore**
+```powershell
+@'
+# Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Python cache
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution
+dist/
+build/
+*.egg-info/
