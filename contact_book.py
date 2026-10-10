@@ -13,7 +13,7 @@ def load_contacts():
         with open(FILE_NAME, "r", encoding="utf-8") as file:
             return json.load(file)
     except (json.JSONDecodeError, OSError):
-        print("Warning: Could not read contacts file.")
+        print("Could not load contacts.")
         return {}
 
 
@@ -23,12 +23,12 @@ def save_contacts(contacts):
 
 
 def add_contact(contacts):
-    name = input("Enter contact name: ").strip()
+    name = input("Enter name: ").strip()
     phone = input("Enter phone number: ").strip()
-    email = input("Enter email address (optional): ").strip()
+    email = input("Enter email (optional): ").strip()
 
     if not name or not phone:
-        print("Name and phone number are required.")
+        print("Name and phone are required.")
         return
 
     contacts[name] = {
@@ -37,7 +37,7 @@ def add_contact(contacts):
     }
 
     save_contacts(contacts)
-    print(f"Contact '{name}' saved successfully!")
+    print(f"Contact '{name}' added successfully!")
 
 
 def view_contacts(contacts):
@@ -45,13 +45,13 @@ def view_contacts(contacts):
         print("No contacts found.")
         return
 
-    print("\n======= CONTACT LIST =======")
+    print("\n===== CONTACTS =====")
 
     for name, details in sorted(contacts.items()):
         print(f"Name: {name}")
         print(f"Phone: {details['phone']}")
         print(f"Email: {details['email']}")
-        print("-" * 30)
+        print("-" * 25)
 
 
 def search_contact(contacts):
@@ -60,20 +60,19 @@ def search_contact(contacts):
     matches = [
         (name, details)
         for name, details in contacts.items()
-        if query in name.lower()
+        if query and query in name.lower()
     ]
 
-    if not matches:
+    if matches:
+        for name, details in matches:
+            print(f"{name} | {details['phone']} | "
+                  f"{details['email']}")
+    else:
         print("No matching contacts found.")
-        return
-
-    for name, details in matches:
-        print(f"{name} | Phone: {details['phone']} "
-              f"| Email: {details['email']}")
 
 
 def delete_contact(contacts):
-    name = input("Enter exact contact name to delete: ").strip()
+    name = input("Enter exact name to delete: ").strip()
 
     if name in contacts:
         del contacts[name]
@@ -87,7 +86,7 @@ def main():
     contacts = load_contacts()
 
     while True:
-        print("\n====== CONTACT BOOK ======")
+        print("\n===== CONTACT BOOK =====")
         print("1. Add contact")
         print("2. View contacts")
         print("3. Search contact")
@@ -105,10 +104,10 @@ def main():
         elif choice == "4":
             delete_contact(contacts)
         elif choice == "5":
-            print("Goodbye! Keep building your streak.")
+            print("Goodbye! Keep coding.")
             break
         else:
-            print("Invalid choice. Select 1-5.")
+            print("Invalid choice. Try again.")
 
 
 if __name__ == "__main__":
